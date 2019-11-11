@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title of the document</title>
+
+    <style>
+      .abc-textarea {
+        display: block;
+        height: 100px;
+        background-color: rgba(100, 0, 100, 0.5);
+      }
+
+      .click-me {
+        display: inline-block;
+        padding: 8px;
+
+        background-color: rgba(213, 245, 226, 0.8);
+        border: 1px solid rgb(46, 204, 113);
+        border-radius: 4px;
+      }
+
+      .click-me.is-clicked {
+        background-color: rgba(150, 245, 226, 1);
+      }
+    </style>
+  </head>
+
+  <body>
+    <textarea class="abc-textarea" autofocus>abc</textarea>
+    <div class="click-me">
+      click me [am-i-clicked? false]
+    </div>
+
+    <script>
+      const textarea = document.querySelector(".abc-textarea");
+      textarea.addEventListener("blur", () => {
+        console.log("textarea blurred");
+        textarea.style.height = "200px";
+      });
+
+      const elementToClick = document.querySelector(".click-me");
+      elementToClick.addEventListener("click", () => {
+        console.log("clicked");
+        elementToClick.innerText = "click me [am-i-clicked? true]";
+        elementToClick.classList.toggle("is-clicked");
+      });
+    </script>
+  </body>
+</html>
